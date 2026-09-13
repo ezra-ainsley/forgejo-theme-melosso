@@ -558,6 +558,16 @@ i.grey.icon.icon.icon.icon {
   padding-bottom: 0.25rem !important;
   margin: 0 !important;
 }
+
+/* Dashboard "Repositories" / "Organizations" tab items put a count in a
+   .ui.grey.label right after the text. The compact margin reset above
+   collapses that gap, so restore spacing for labels that follow text in
+   those menu items. */
+.tabs-with-labels .item > .ui.label,
+.dashboard-orgs .ui.label,
+.dashboard-repos .ui.label {
+  margin-inline-start: 0.5rem !important;
+}
 .ui.red.label.notification_count,
 .ui.primary.label,
 .ui.primary.labels .label {
@@ -592,6 +602,15 @@ strong.attention-caution, svg.attention-caution {
 .ui.basic.red.button {
   background-color: var(--color-red);
   color: var(--color-white);
+}
+
+/* Heatmap hover tooltip: vue3-calendar-heatmap renders a bare tippy box
+   (no data-theme) whose text color comes from --color-secondary-dark-6,
+   which this theme intentionally keeps near-black. The box background is
+   --color-body (already dark), so only the text needs overriding to stay
+   readable when hovering contribution days. */
+.tippy-box:not([data-theme]) {
+  color: var(--color-tooltip-text) !important;
 }
 .ui.basic.red.button:hover,
 .ui.basic.red.button:focus {
